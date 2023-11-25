@@ -134,6 +134,26 @@
 }
 
 
+.media-tab .now-playing{
+  display: flex;
+  margin-bottom: 2rem;
+  font-family: 'Como';
+  font-weight: bold;
+  font-size: x-large;
+  padding: 1rem;
+  gap: 1.5rem;
+  color: rgba(255,200,48,1);
+  border-bottom: 1px dotted rgba(255,200,48, 0.8);
+  align-items: center;
+}
+.media-tab .now-playing p{
+  margin: 0;
+  font-size: small;
+  /* border: 1px solid red; */
+  /* max-width: 90%; */
+  
+}
+
 
 .conncetion-form{
   /* border: 1px solid red; */
@@ -320,6 +340,7 @@
 .meaasge.you + .sender{
   text-align: right;
 }
+
 .meaasge{
   display: flex;
   flex-direction: row;
@@ -331,6 +352,9 @@
 .meaasge.you{
   flex-direction: row-reverse;
 }
+.meaasge.you p.text{
+  background-color: rgba(46,44,37,255)!important;
+}
 
 .meaasge p{
   margin: 0;
@@ -340,16 +364,18 @@
 }
 .meaasge .text{
   padding: 1rem;
-  background-color: rgba(40,41,45,255);
   border-radius: 10px;
   max-width: 70%;
+  background-color: rgba(40,41,45,255);
   /* min-width: 40%; */
   color: #ccc;
   /* display: block; */
 }
+
 .meaasge .time{
   color: rgba(183,146,44,255);
 }
+
 
 /* For WebKit-based browsers */
 .chat-box::-webkit-scrollbar {
@@ -414,4 +440,31 @@
   border: none;
   outline: none;
   color: #ccc;
+}
+
+.connected-tab .user-info{
+  display: flex;
+  padding: 1rem;
+  color: rgba(255,200,48,1);
+  gap: 1rem;
+  font-family: 'Como';
+  font-style: normal;
+  margin: .5rem 2rem;
+  font-weight:bolder;
+  font-size: x-large;
+  /* border: 1px solid red; */
+  border-bottom: 1px dotted rgba(255,200,48,1);
+  align-items: center;
+  /* justify-content: center; */
+
+}
+
+.connected-tab .user-info P{
+  margin: 0;
+  font-size: large;
+}
+.connected-tab .connected-peoples{
+  display: flex;
+  flex-direction: column;
+
 }

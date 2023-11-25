@@ -44,6 +44,7 @@
   font-style: normal;
   color: #ccc;
   letter-spacing: .1em;
+  flex-grow: 1;
 }
 .video-title button{
   color: #ccc;
@@ -51,10 +52,25 @@
   border: none;
   outline: none;
   font-family: 'Como';
-  /* font-weight: bold; */
-  margin-left: auto;
-
+  font-size: x-large;
 }
+
+.video-title.connected-title button .fa-spin{
+  display: inline-block;
+  color: rgba(255,200,48, 1);
+  font-size: xx-large;
+}
+.video-title.connected-title button :not(.fa-spin){
+  display: none;
+}
+
+.video-title:not(.connected-title) .fa-spin{
+  display: none;
+}
+
+
+
+
 /* Headding */
 .headding{
     /* border: 1px solid red; */

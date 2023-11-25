@@ -7,8 +7,8 @@ const captionsBtn = document.querySelector(".captions-btn")
 const speedBtn = document.querySelector(".speed-btn")
 const currentTimeElem = document.querySelector(".current-time")
 const totalTimeElem = document.querySelector(".total-time")
-const previewImg = document.querySelector(".preview-img")
-const thumbnailImg = document.querySelector(".thumbnail-img")
+// const previewImg = document.querySelector(".preview-img")
+// const thumbnailImg = document.querySelector(".thumbnail-img")
 const volumeSlider = document.querySelector(".volume-slider")
 const videoContainer = document.querySelector(".video-container")
 const timelineContainer = document.querySelector(".timeline-container")
@@ -86,13 +86,13 @@ function handleTimelineUpdate(e) {
     1,
     Math.floor((percent * video.duration) / 10)
   )
-  const previewImgSrc = `assets/previewImgs/preview${previewImgNumber}.jpg`
-  previewImg.src = previewImgSrc
+  // const previewImgSrc = `assets/previewImgs/preview${previewImgNumber}.jpg`
+  // previewImg.src = previewImgSrc
   timelineContainer.style.setProperty("--preview-position", percent)
 
   if (isScrubbing) {
     e.preventDefault()
-    thumbnailImg.src = previewImgSrc
+    // thumbnailImg.src = previewImgSrc
     timelineContainer.style.setProperty("--progress-position", percent)
   }
 }
@@ -122,6 +122,9 @@ function toggleCaptions() {
 // Duration
 video.addEventListener("loadeddata", () => {
   totalTimeElem.textContent = formatDuration(video.duration)
+  currentTimeElem.textContent = formatDuration(video.currentTime)
+  const percent = video.currentTime / video.duration
+  timelineContainer.style.setProperty("--progress-position", percent)
 })
 
 video.addEventListener("timeupdate", () => {
