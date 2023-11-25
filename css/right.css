@@ -1,0 +1,417 @@
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2vh 0;
+    gap: 1rem;
+    justify-content: right;
+    background-color: rgba(33,34,36,255);
+    padding: 1rem;
+    border-radius: 15px;
+  }
+  .tab-input {
+    position: absolute;
+    opacity: 0;
+  }
+  .tab-label {
+    cursor: pointer;
+    /* width: auto; */
+    padding: .7rem 1rem;
+    /* width: 150px; */
+    /* background-color: rgba(22,23,25,255); */
+    color: #d8d8d8;
+    /* flex: 1; */
+    color: rgba(241,190,47,255);
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Como';
+    font-weight: bold;
+    font-style: normal;
+    display: flex;
+    background-color: rgba(46,44,37,255);
+    border-radius: 10px;
+    transition: flex-grow 120ms ease-in;
+  }
+  .tab-label span{
+    flex-grow: 1;
+    text-align: center;
+    display: none;
+  }
+
+ 
+  .tab-label:active {
+    background:  rgba(46,44,37,255);
+  }
+  .tab-input:focus + .tab-label {
+    z-index: 1;
+  }
+  .tab-input:checked + .tab-label {
+    /* order: -1; */
+    margin-right: auto;
+    flex-grow: 1;
+    transition: flex-grow 120ms ease-out;
+    font-size: larger;
+  }
+  .tab-input:checked + .tab-label span{
+    display: block;
+    font-size:medium;
+  }
+  .right .tab-panel {
+    width: 100%;
+    display: none;
+    flex-grow: 1;
+    order: 99;
+    min-height: calc(100vh - 21vh);
+    max-height: calc(100vh - 21vh);
+    color: wheat;
+    overflow: hidden;
+    /* border: 1px solid yellow; */
+  }
+  .tab-input:checked + .tab-label + .tab-panel {
+    display: block;
+  }
+
+.media-tab{
+  padding: 2rem;
+  display: flex;
+  /* flex-direction: ; */
+  gap: 5rem;
+  color: rgba(255,200,48,255);
+}
+.media-tab input[type="file"]{
+  display: none;
+}
+.media-tab input[type="text"],
+.conncetion-form input[type ="text"]
+{
+
+  background-color: rgba(46,44,37,255);
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: rgba(255,200,48,255);
+  text-align: center;
+  font-family: 'Como';
+  font-style: normal;
+}
+.media-tab input[type="text"]:active,
+.media-tab input[type="text"]:focus,
+.media-tab input[type="text"]:hover,
+.conncetion-form input[type ="text"]:active,
+.conncetion-form input[type ="text"]:focus,
+.conncetion-form input[type ="text"]:hover
+
+{
+  border: 1px solid rgba(255,200,48,0.8);
+}
+
+.file-input-divs{
+  margin-bottom: 2.5rem;
+}
+
+.media-tab label{
+  /* display: block; */
+  width: auto;
+  color: black;
+  border-radius: 10px;
+  padding: .7rem 1.4rem;
+  background-color: rgba(46,44,37,255);
+  cursor: pointer;
+  transition: background-color 100ms ease-in-out;
+  /* border: 2px solid rgba(255,200,48,255); */
+  color: rgba(255,200,48,255);
+  font-family: 'Como';
+  font-weight: bold;
+  font-style: normal;
+  /* margin-bottom: 3rem;   */
+
+  
+}
+.media-tab label:hover{
+  background-color: rgba(255,200,48,255);
+  transition: background-color 100ms ease-in-out;
+  color: black;
+}
+
+
+
+.conncetion-form{
+  /* border: 1px solid red; */
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 4rem;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.conncetion-form input[type = "text"]{
+  display: block;
+  padding: 1rem;
+  font-size: large;
+  font-weight: bold;
+}
+.conncetion-form button{
+  padding: 1rem;
+  background-color: rgba(255,200,48,1);
+  border-radius: 10px;
+  border: none;
+  font-family: 'Como';
+  font-weight: bold;
+  font-style: normal;
+  font-size: large;
+  cursor: pointer;
+  margin-bottom: 10rem;
+}
+.conncetion-form span{
+  width: 100%;
+  /* border: 1px solid red; */
+  color: rgba(255,200,48,1);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 50px;
+  margin-bottom: 1rem;
+}
+.conncetion-form button:hover{
+
+}
+
+.room-tab.no-connect .conncetion-form,
+.room-tab.connecting .connecting-tab,
+.room-tab.connected .connected-tab
+{
+  display: flex;
+}
+
+
+
+.connected-tab{
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+.connecting-tab {
+  /* border: 1px solid red; */
+  height: 100%;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  display: none;
+}
+
+/*  */
+.lds-roller {
+  /* border: 1px solid red; */
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,200,48,1);
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*  */
+
+
+.chat-box{
+  /* border: 1px solid red; */
+  width: 100%;
+  max-height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.message-container{
+  margin: 0.7rem 0;
+}
+.message-container .sender{
+  font-family: 'Como';
+  font-style: normal;
+  margin: 0 4rem;
+  padding: 0.5rem;
+  color: rgba(127,127,128,255);
+  font-size: small;
+}
+.meaasge.you + .sender{
+  text-align: right;
+}
+.meaasge{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+.meaasge.you{
+  flex-direction: row-reverse;
+}
+
+.meaasge p{
+  margin: 0;
+  font-family: 'Como';
+  font-style: normal;
+  font-weight: 600;
+}
+.meaasge .text{
+  padding: 1rem;
+  background-color: rgba(40,41,45,255);
+  border-radius: 10px;
+  max-width: 70%;
+  /* min-width: 40%; */
+  color: #ccc;
+  /* display: block; */
+}
+.meaasge .time{
+  color: rgba(183,146,44,255);
+}
+
+/* For WebKit-based browsers */
+.chat-box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  /* background-color: rgba(255,200,48,0.3); */
+  
+  border-radius: 5px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255,200,48,0.8);
+}
+
+/* For Firefox */
+.chat-box {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,200,48,0.8) transparent;
+}
+
+
+/* For Edge and IE */
+/* Unfortunately, Edge and IE do not support scrollbar customization via CSS */
+
+.message-send-box{
+  position: absolute;
+  display: flex;
+  /* padding: 0.2rem 0; */
+  border-radius: 10px;
+  align-items: center;
+  bottom: 0;
+  height: 10%;
+  background-color: rgba(40,41,45,255);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  z-index: 2;
+  gap: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+}
+
+.message-send-box  input[type= "text"]{
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  flex-grow: 1;
+  height: 70%;
+  font-family: 'Como';
+  font-style: normal;
+  font-weight: 600;
+  font-size: large;
+  text-align: center;
+  color: #ccc;
+}
+.message-send-box button{
+  font-size: x-large;
+  background: none;
+  border: none;
+  outline: none;
+  color: #ccc;
+}

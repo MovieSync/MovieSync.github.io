@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./elements/como-font/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://db.onlinewebfonts.com/c/f8624ae9c68e8be8ee70c4bcac4dab69?family=Myriad+Hebrew+Italic" rel="stylesheet">
+    <link rel="stylesheet" href="css/videoPlayer.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/right.css">
+    <title>MovieSync</title>
+</head>
+<body>
+    <div class="left">
+        <div class="headding">
+            <img src="./elements/img/popcorn.png" height="75" width="75" alt="">
+            <h1>MovieSync</h1>
+            <button class="donate-btn ease-btn">Donate</button>
+            <button class="about-btn ease-btn">About</button>
+        </div>
+        <div class="video-title"> 
+            <img src="./elements/img/movie-icon.png" height="30" width="30">
+            <!-- <i class="fa-solid fa-film"></i> -->
+            <h3>Movie Name goes Here</h3>
+            <button>
+                Room name <i class="fa-solid fa-wifi"></i>
+            </button>
+        </div>
+        <div class="video-container paused" data-volume-level="high">
+            <img class="thumbnail-img">
+            <div class="video-controls-container">
+            <div class="timeline-container">
+                <div class="timeline">
+                <img class="preview-img">
+                <div class="thumb-indicator"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="play-pause-btn">
+                    <i class="fa-solid fa-play play-icon"></i>
+                    <i class="fa-solid fa-pause pause-icon"></i>
+                </button>
+                <div class="volume-container">
+                <button class="mute-btn" style="text-align: left;">
+                    <i class="fa-solid fa-volume-high volume-high-icon"></i>
+                    <i class="fa-solid fa-volume-low volume-low-icon"></i>
+                    <i class="fa-solid fa-volume-xmark volume-muted-icon"></i>
+                </button>
+                <input class="volume-slider" type="range" min="0" max="1" step="any" value="1">
+                </div>
+                <div class="duration-container">
+                <div class="current-time">0:00</div>
+                /
+                <div class="total-time">0:00</div>
+                </div>
+                <button class="captions-btn">
+                    <i class="fa-solid fa-closed-captioning"></i>
+                </button>
+                <button class="speed-btn wide-btn">
+                1x
+                </button>
+                <button>
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <button><i class="fa-solid fa-comment-dots"></i></button>
+                <button class="mini-player-btn">
+                    <i class="fa-solid fa-display"></i>
+                </button>
+                <button class="theater-btn">
+                <svg class="tall" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z"/>
+                </svg>
+                <svg class="wide" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M19 7H5c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 8H5V9h14v6z"/>
+                </svg>
+                </button>
+                <button class="full-screen-btn">
+                <i class="fa-solid fa-expand open"></i>
+                <i class="fa-solid fa-compress close"></i>
+                </button>
+            </div>
+            </div>
+            <video src="video2.mp4">
+            <track kind="captions" srclang="en" src="assets/subtitles.vtt">
+            </video>
+        </div>
+    </div>
+    <div class="right">
+        <div class="tabs">
+           
+            <!-- CHat -->
+            <input class=tab-input name="tabs" type="radio" id="tab-1" checked="checked"/>
+            <label class="tab-label ease-btn" for="tab-1"><i class="fa-solid fa-comment"></i> <span>Chat</span> </label>
+            <div class="tab-panel" style="position: relative;;">
+               <div class="chat-box">
+                    <div class="message-container">
+                        <div class="meaasge">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                hi
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                hi hdqw qwd wdhqw odihqw owheqwioeh wiohqw whwq oihqwio hriowhrqih h iwqrh ioh iqioh rih oh hr hh
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+                    <div class="message-container">
+                        <div class="meaasge you">
+                            <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
+                            <p class="text">
+                                ohh accha
+                            </p>
+                            <p class="time">12:69</p>
+                        </div>
+                        <p class="sender">Tahmid Ahmed</p>
+                    </div>
+               </div>
+               <div class="message-send-box">
+                    <input placeholder="Type Message" type="text">
+                    <button class="ease-btn"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button class="ease-btn" style="color: rgba(255,200,48,1);"><i class="fa-regular fa-face-grin"></i></button>           
+               </div>
+            </div>
+
+            <!-- Room -->
+            <input class=tab-input name="tabs" type="radio" id="tab-2" />
+            <label class="tab-label ease-btn" for="tab-2"><i class="fa-solid fa-people-roof"></i> <span> Room</span></label>
+            <div class="tab-panel room-tab connected">
+                <div class="connected-tab">
+                    <div class="user-info">
+                        <p>
+                            <i class="fa-solid fa-user"></i>
+                            <span>Username<span>
+                        </p>
+                    </div>
+                    <div class="user-info">
+                        <p>
+                            <i class="fa-solid fa-house"></i>
+                            <span>Room ID<span>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="connecting-tab">
+                    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                </div>
+                <div class="conncetion-form">
+                    <span><i class="fa-brands fa-connectdevelop fa-spin"></i></span>
+                    <input placeholder="Enter Your Username" type="text">
+                    <input placeholder="Enter Room ID" type="text">
+                    <button class="ease-btn">Join Room <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                </div>
+            </div>
+
+            <!-- Utils -->
+            <input class=tab-input name="tabs" type="radio" id="tab-4"/>
+            <label class="tab-label ease-btn" for="tab-4"><i class="fa-solid fa-screwdriver-wrench"></i> <span>Utils</span></label>
+            <div class="tab-panel">
+              Utils
+            </div>
+
+             <!-- Media -->
+             <input class=tab-input name="tabs" type="radio" id="tab-3" />
+             <label class="tab-label ease-btn" for="tab-3"><i class="fa-solid fa-file-video"></i> <span>Media</span></label>
+             <div class="tab-panel media-tab">
+                <div class="file-input-divs">
+                    <input type="file" id="video-file-input" class="file-input">
+                    <label for="video-file-input" class="ease-btn">Open File From Device</label>
+                </div>
+                <div class="file-input-divs">
+                    <input type="file" id="subtitle-file-input" class="file-input">
+                    <label for="subtitle-file-input" class="ease-btn">Open Subtitle From Device</label>
+                </div>
+                <div class="file-input-divs" style="display: flex; gap: 1rem;">
+                    <label><i class="fa-solid fa-link"></i></label>
+                    <input style="flex-grow: 1;" type="text" placeholder="Enter Direct URL" id="direct-url-input">
+                    <label for="direct-url-input"  class="ease-btn">Play</label>
+                </div>
+
+                 <!-- One Drive URL -->
+                 <div class="file-input-divs" style="display: flex; gap: 1rem;">
+                    <label><i class="fa-solid fa-cloud"></i></label>
+                    <input style="flex-grow: 1;" type="text" placeholder="Enter One-Drive URL" id="one-drive-url-input">
+                    <label for="one-drive-url-input"  class="ease-btn">Play</label>
+                </div>
+
+                <!-- Google Drive URL -->
+                <div class="file-input-divs" style="display: flex; gap: 1rem;">
+                    <label><i class="fa-brands fa-google-drive"></i></label>
+                    <input style="flex-grow: 1;" type="text" placeholder="Enter G-Drive URL" id="g-drive-url-input">
+                    <label for="g-drive-url-input"  class="ease-btn">Play</label>
+                </div>
+
+                  <!-- YouTube URL -->
+                  <div class="file-input-divs" style="display: flex; gap: 1rem;">
+                    <label><i class="fa-brands fa-youtube"></i></label>
+                    <input style="flex-grow: 1;" type="text" placeholder="Enter Youtube URL" id="youtube-url-input">
+                    <label for="youtube-url-input"  class="ease-btn">Play</label>
+                </div>
+             </div>
+
+             <!-- Subtitle -->
+             <input class=tab-input name="tabs" type="radio" id="tab-5"/>
+             <label class="tab-label ease-btn" for="tab-5"><i class="fa-solid fa-closed-captioning"></i> <span>Subtitle</span></label>
+             <div class="tab-panel">
+               Subtitle
+             </div>
+
+          </div>
+    </div>
+</body>
+<script src="js/playerControl.js"></script>
+</html>
