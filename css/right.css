@@ -298,7 +298,7 @@
 .chat-box{
   /* border: 1px solid red; */
   width: 100%;
-  max-height: 90%;
+  max-height: 93%;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-gutter: stable;
@@ -383,7 +383,7 @@
   border-radius: 10px;
   align-items: center;
   bottom: 0;
-  height: 10%;
+  height: 7%;
   background-color: rgba(40,41,45,255);
   backdrop-filter: blur(8px);
   width: 100%;
