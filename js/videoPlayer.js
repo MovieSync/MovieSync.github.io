@@ -7,7 +7,7 @@ const VIDEO = {
     // 
     video: document.getElementById('videoPlayer'),
     videoSource: document.getElementById('videoSource'),
-
+    container:  document.querySelector(".video-container"),
     // 
     subtitlesTrack: document.getElementById('subtitlesTrack'),
     
@@ -34,13 +34,11 @@ const VIDEO = {
         this.sourceType = type;
         this.video.load();
     },
-   
-
     addSubtitle: function(source, filename){
         if(!source) {
             return;
         }
-        subtitleAdded = true;
+        this.subtitleAdded = true;
         this.subtitlesTrack.src = source;
         this.video.textTracks[0].mode = 'showing';
         this.changeSubtitleFileName(filename);
@@ -55,6 +53,15 @@ const VIDEO = {
         this.subtitleFileName = fileName;
         document.getElementById('subtile-filename-tab').textContent = fileName;
     },
+
+    isFullScreen: function(){
+        return (
+            document.fullscreenElement === this.container ||
+            document.webkitFullscreenElement === this.container ||
+            document.mozFullScreenElement === this.container ||
+            document.msFullscreenElement === this.container
+          );
+    }
 
 }
 

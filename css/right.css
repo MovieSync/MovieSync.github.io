@@ -203,6 +203,7 @@
 .room-tab.connected .connected-tab
 {
   display: flex;
+  /* transition: display 120ms ease-in-out; */
 }
 
 
@@ -213,6 +214,7 @@
   height: 100%;
   width: 100%;
   /* border: 1px solid red; */
+  /* transition: display 120ms ease-in-out; */
 }
 
 .connecting-tab {
@@ -224,6 +226,7 @@
   align-content: center;
   align-items: center;
   display: none;
+  transition: display 120ms ease-in-out;
 }
 
 /*  */
@@ -337,11 +340,11 @@
   color: rgba(127,127,128,255);
   font-size: small;
 }
-.meaasge.you + .sender{
+.message.you + .sender{
   text-align: right;
 }
 
-.meaasge{
+.message{
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -349,20 +352,20 @@
   gap: 1rem;
   padding: 0 1rem;
 }
-.meaasge.you{
+.message.you{
   flex-direction: row-reverse;
 }
-.meaasge.you p.text{
+.message.you p.text{
   background-color: rgba(46,44,37,255)!important;
 }
 
-.meaasge p{
+.message p{
   margin: 0;
   font-family: 'Como';
   font-style: normal;
   font-weight: 600;
 }
-.meaasge .text{
+.message .text{
   padding: 1rem;
   border-radius: 10px;
   max-width: 70%;
@@ -372,7 +375,7 @@
   /* display: block; */
 }
 
-.meaasge .time{
+.message .time{
   color: rgba(183,146,44,255);
 }
 
@@ -409,14 +412,13 @@
   border-radius: 10px;
   align-items: center;
   bottom: 0;
-  height: 7%;
+  /* height: 7%; */
   background-color: rgba(40,41,45,255);
   backdrop-filter: blur(8px);
   width: 100%;
   z-index: 2;
   gap: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1rem 2rem;
 
 }
 
@@ -449,11 +451,11 @@
   gap: 1rem;
   font-family: 'Como';
   font-style: normal;
-  margin: .5rem 2rem;
+  margin: .5rem 4rem;
   font-weight:bolder;
   font-size: x-large;
   /* border: 1px solid red; */
-  border-bottom: 1px dotted rgba(255,200,48,1);
+  border-left: 3px solid rgba(255,200,48,0.5);
   align-items: center;
   /* justify-content: center; */
 
@@ -462,9 +464,81 @@
 .connected-tab .user-info P{
   margin: 0;
   font-size: large;
+  letter-spacing: 0.1rem;
 }
 .connected-tab .connected-peoples{
   display: flex;
+  margin-top: 2rem;
   flex-direction: column;
+  /* border: 1px solid yellow; */
+  color: rgba(255,200,48,1);
+}
+.connected-tab p{
+  margin: 0;
+} 
+.connected-peoples .one-people{
+  font-family: 'Como';
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  /* border: 1px solid red; */
+  background-color: rgba(46,44,37,255);
+}
+.logout{
+  display: flex;
+  padding: 1rem 3rem;
+}
+.logout button{
+  border: none;
+  outline: none;
+  margin-left: auto;
+  color: rgba(255,200,48,1);
+  background-color: rgba(46,44,37,255);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  font-size: larger;
 
+}
+.logout button:hover{
+  background-color: rgba(255,200,48,1);
+  color: black;
+}
+
+.people-caption-no,
+.people-video-no,
+.people-sync-no,
+.people-fullscreen-no
+{
+  display: none;
+  opacity: 80%;
+}
+.one-people:not(.people-caption) .people-caption-no,
+.one-people:not(.people-video) .people-video-no,
+.one-people:not(.people-sync) .people-sync-no,
+.one-people:not(.people-fullscreen) .people-fullscreen-no
+{
+  display: inline-block;
+}
+.one-people:not(.people-caption) .people-caption-yes,
+.one-people:not(.people-video) .people-video-yes,
+.one-people:not(.people-sync) .people-sync-yes,
+.one-people:not(.people-fullscreen) .people-fullscreen-yes
+{
+  display: none;
+}
+
+.people-active .status-icon{
+  color: #00533f;
+}
+
+.people-late .status-icon{
+  color: inherit;
+}
+.people-disconnect .status-icon{
+  color: red;
 }
