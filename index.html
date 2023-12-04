@@ -17,15 +17,15 @@
 <body>
     <div class="left">
         <div class="headding">
-            <img src="./elements/img/milkyway-icon.png" height="60" width="60" alt="">
+            <img src="./elements/img/milkyway-icon.png" height="50" width="50" alt="">
             <h1>Mikyway</h1>
-            <button class="donate-btn ease-btn">About</button>
-            <button class="about-btn ease-btn">About</button>
+            <!-- <button class="donate-btn ease-btn">About</button>
+            <button class="about-btn ease-btn">About</button> -->
         </div>
         <div id="video-title-id" class="video-title"> 
             <img src="./elements/img/movie-icon.png" height="30" width="30">
             <!-- <i class="fa-solid fa-film"></i> -->
-            <h3 id = "video-filename-title" >Movie Name goes Here</h3>
+            <h3 id = "video-filename-title" >...</h3>
             <button>
                 <i class="fa-brands fa-connectdevelop fa-spin"></i>
                 <i class="fa-brands fa-connectdevelop"></i>
@@ -46,12 +46,12 @@
                     <i class="fa-solid fa-pause pause-icon"></i>
                 </button>
                 <div class="volume-container">
-                <button class="mute-btn" style="text-align: left;">
-                    <i class="fa-solid fa-volume-high volume-high-icon"></i>
-                    <i class="fa-solid fa-volume-low volume-low-icon"></i>
-                    <i class="fa-solid fa-volume-xmark volume-muted-icon"></i>
-                </button>
-                <input class="volume-slider" type="range" min="0" max="1" step="any" value="1">
+                    <button class="mute-btn" style="text-align: left;">
+                        <i class="fa-solid fa-volume-high volume-high-icon"></i>
+                        <i class="fa-solid fa-volume-low volume-low-icon"></i>
+                        <i class="fa-solid fa-volume-xmark volume-muted-icon"></i>
+                    </button>
+                    <input class="volume-slider" type="range" min="0" max="1" step="any" value="1">
                 </div>
                 <div class="duration-container">
                 <div class="current-time">0:00</div>
@@ -61,9 +61,9 @@
                 <button class="captions-btn">
                     <i class="fa-solid fa-closed-captioning"></i>
                 </button>
-                <button class="speed-btn wide-btn">
+                <!-- <button class="speed-btn wide-btn">
                 1x
-                </button>
+                </button> -->
                 <button>
                     <i class="fa-solid fa-gear"></i>
                 </button>
@@ -99,7 +99,7 @@
             <label class="tab-label ease-btn" for="tab-1"><i class="fa-solid fa-comment"></i> <span>Chat</span> </label>
             <div class="tab-panel" style="position: relative;;">
                <div id="chat-box-container" class="chat-box">
-                    <div class="message-container">
+                    <!-- <div class="message-container">
                         <div class="message">
                             <img height="30" width="30" src="./elements/img/avaters/avater-1.png" alt="">
                             <p class="text">
@@ -118,13 +118,16 @@
                             <p class="time">12:69</p>
                         </div>
                         <p class="sender">Tahmid Ahmed</p>
-                    </div>
+                    </div> -->
                     
                </div>
+                <div class="emoji-box hidden">
+                    <emoji-picker></emoji-picker>
+                </div>
                <div class="message-send-box">
                     <input id="chat-input-field" placeholder="Type Message" type="text">
                     <button onclick="sendTextMessage()" class="ease-btn"><i class="fa-solid fa-paper-plane"></i></button>
-                    <button class="ease-btn" style="color: rgba(255,200,48,1);"><i class="fa-regular fa-face-grin"></i></button>           
+                    <button onclick="document.querySelector('.emoji-box').classList.toggle('hidden')" class="ease-btn" style="color: rgba(255,200,48,1);"><i class="fa-regular fa-face-grin"></i></button>           
                </div>
             </div>
 
@@ -260,6 +263,7 @@
           </div>
     </div>
 </body>
+<script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 <script src="./js/utils.js"></script>
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script src="./js/playerControl.js"></script>

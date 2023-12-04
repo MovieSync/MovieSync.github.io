@@ -16,15 +16,32 @@ const MESSAGE = {
             time: TIME.now(),
             text: text
         }
-    }
+    },
+
+    media: function(mediaType){
+        return {
+            type: 'media',
+            username: ROOM.username,
+            mediaType: mediaType,
+            time: VIDEO.video.currentTime
+        }
+    },
+
+    join: function(){
+       return { 
+        type: 'join',
+        username: ROOM.username
+       }
+    },
+
 };
 
 const messageHandeler = new Map();
 messageHandeler.set('existing', handleExistMessage);
 messageHandeler.set('text', handleTextMessage);
-// messageHandeler.set('media', handleMediaMessage);
+messageHandeler.set('media', handleMediaMessage);
+messageHandeler.set('join', handleJoinMessage);
 
-// messageHandeler.set('join', handleJoinMessage);
 // messageHandeler.set('leave', handleLeaveMessage);
 // messageHandeler.set('poke', handlePokeMessage);
 // messageHandeler.set('reconnect', handleReconnectMessage);
@@ -51,8 +68,8 @@ const connectedPleopleKeyPair = {
     fullScreen: 'people-fullscreen'
 }
 function handleExistMessage(message){
+    // console.log(message)
     let div;
-    console.log(message)
     if(!connectedPeopleLsitMap.has(message.username)){
         div = document.createElement('div');
         div.classList.add('one-people');
@@ -81,8 +98,10 @@ function handleExistMessage(message){
                             <i class="fa-solid fa-circle-chevron-down"></i>
                             <!-- <i class="fa-solid fa-circle-chevron-up"></i> -->
                         </div>`;
+
         connectedPeopleLsit.appendChild(div);
-        connectedPeopleLsitMap.set(message.username, document.getElementById(`people-${message.username}`));      
+        connectedPeopleLsitMap.set(message.username, document.getElementById(`people-${message.username}`));
+
     }
     else{
         div = connectedPeopleLsitMap.get(message.username)
@@ -96,9 +115,12 @@ function handleExistMessage(message){
         }
     }
 }
-const chatBox = document.getElementById('chat-box-container');
 function handleTextMessage(message){
-    
+    appendTextToTextBox(message);
+}
+
+const chatBox = document.getElementById('chat-box-container');
+function appendTextToTextBox(message){
     const container = document.createElement('div');
     container.classList.add('message-container');
     
@@ -134,4 +156,29 @@ function handleTextMessage(message){
 
     chatBox.appendChild(container);
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+const mediaHandlers = {
+    play: function(time){
+        VIDEO.play(time);
+    },
+    pause: function(time){
+        VIDEO.pause(time);
+    },
+    seeked: function(time){
+        VIDEO.seek(time);
+    }
+}
+function handleMediaMessage(message){
+    console.log(message)
+    if(message.username === ROOM.username){
+        return;
+    }
+    VIDEO.ignoreMediaEvent = true;
+    mediaHandlers[message.mediaType](message.time);   
+    setTimeout(()=>{
+        VIDEO.ignoreMediaEvent = false;
+    },1500)
+}
+function handleJoinMessage(message){
+    ROOM.broadcastExisTance();
 }

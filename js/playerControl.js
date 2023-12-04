@@ -4,7 +4,7 @@ const fullScreenBtn = document.querySelector(".full-screen-btn")
 const miniPlayerBtn = document.querySelector(".mini-player-btn")
 const muteBtn = document.querySelector(".mute-btn")
 const captionsBtn = document.querySelector(".captions-btn")
-const speedBtn = document.querySelector(".speed-btn")
+// const speedBtn = document.querySelector(".speed-btn")
 const currentTimeElem = document.querySelector(".current-time")
 const totalTimeElem = document.querySelector(".total-time")
 // const previewImg = document.querySelector(".preview-img")
@@ -98,7 +98,7 @@ function handleTimelineUpdate(e) {
 }
 
 // Playback Speed
-speedBtn.addEventListener("click", changePlaybackSpeed)
+// speedBtn.addEventListener("click", changePlaybackSpeed)
 
 function changePlaybackSpeed() {
   let newPlaybackRate = video.playbackRate + 0.25

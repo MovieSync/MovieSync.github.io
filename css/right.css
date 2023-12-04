@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     margin: 2vh 0;
     gap: 1rem;
-    justify-content: right;
+    justify-content: space-around;
     background-color: rgba(33,34,36,255);
     padding: 1rem;
     border-radius: 15px;
@@ -76,6 +76,7 @@
   /* flex-direction: ; */
   gap: 5rem;
   color: rgba(255,200,48,255);
+  /* overflow: scroll; */
 }
 .media-tab input[type="file"]{
   display: none;
@@ -205,7 +206,9 @@
   display: flex;
   /* transition: display 120ms ease-in-out; */
 }
-
+.room-tab.connected.disconnedted{
+  background-color: rgba(255, 0 , 0 , 0.1);
+}
 
 
 .connected-tab{
@@ -405,6 +408,21 @@
 /* For Edge and IE */
 /* Unfortunately, Edge and IE do not support scrollbar customization via CSS */
 
+emoji-picker{
+  /* --background: rgba(22,23,25,255); */
+  /* --border-color: rgba(22,23,25,255); */
+}
+
+.emoji-box{
+  position: absolute;
+  bottom: 10%;
+  right: 1%;
+}
+
+.hidden.hidden{
+  display: none;
+}
+
 .message-send-box{
   position: absolute;
   display: flex;
@@ -442,6 +460,7 @@
   border: none;
   outline: none;
   color: #ccc;
+  cursor: pointer;
 }
 
 .connected-tab .user-info{

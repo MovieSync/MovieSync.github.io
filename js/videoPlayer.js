@@ -22,8 +22,73 @@ const VIDEO = {
     videoAdded: false,
     subtitleAdded: false,
 
+    // ignorePlay: false,
+    // ignorePause: false,
+    // ignoreSeeked: false,
+    ignoreMediaEvent: false,
+
     // 
+    init: function(){
+        this.video.addEventListener('play', this.playEvent);
+        this.video.addEventListener('pause', this.pauseEvent);
+        this.video.addEventListener('seeked', this.seekEvent);
+
+    },
+
+    resetIgnoreMedia: function(){
+        setTimeout(()=>{
+            // ignorePlay = false;
+            // ignorePause = false;
+            // ignoreSeeked = false;
+            this.ignoreMediaEvent = true;
+        },2000)
+    },
+    
+    // 
+    playEvent: function(){
+        if(this.ignorePlay){
+            this.ignorePlay = false;
+            return;
+        }
+        ROOM.sendMessage(MESSAGE.media('play'));
+    },
+
+    pauseEvent: function(){
+        if(this.ignorePause){
+            this.ignorePause = false;
+            return;
+        }
+        ROOM.sendMessage(MESSAGE.media('pause'));
+    },
+
+    seekEvent: function(){
+        if(this.ignoreSeeked){
+            this.ignoreSeeked = false;
+            return;
+        }
+        ROOM.sendMessage(MESSAGE.media('seeked'));
+        
+    },
    
+    play: function(time){
+        this.ignorePlay = true;
+        this.ignoreSeeked = true;
+        this.video.currentTime = Number(time);
+        this.video.play()
+    },
+
+    pause: function(time){
+        this.ignorePause = true;
+        this.ignoreSeeked = true;
+        this.video.currentTime = Number(time);
+        this.video.pause()
+    },
+
+    seek: function(time){
+        this.ignoreSeeked = true;
+        this.video.currentTime = Number(time);
+    },
+
     playVideo: function(source, filename, type){
         if(!source) {
             return;
@@ -34,6 +99,7 @@ const VIDEO = {
         this.sourceType = type;
         this.video.load();
     },
+
     addSubtitle: function(source, filename){
         if(!source) {
             return;
@@ -65,6 +131,7 @@ const VIDEO = {
 
 }
 
+VIDEO.init();
 
 // Listeners
 /*-----------------------------------------------------------*/

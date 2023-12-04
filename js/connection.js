@@ -22,7 +22,7 @@ const ROOM = {
             this.hendleConnect();
         });
         this.mqttClient.on('error', (error) => {
-         hendleError(error);
+         this.hendleError(error);
         });
         this.mqttClient.on('close', ()=>{
             this.hendleDisconnect();
@@ -31,51 +31,77 @@ const ROOM = {
             MessageHandler.handle(message.toString())
         });
     },
+    hendleError: function(err){
+        console.log(err);
+    },
 
     hendleConnect: function (){
-        this.sendMessage(MESSAGE.existing());
+        this.connected = true;
         if(this.connecting){
             this.hendleFirstConnect();
         }
-        this.connected = true;
         this.connecting = false;
         this.makeTabConnected();
         this.startBoradcastingExistance()
     },
     startBoradcastingExistance: function(){
+        this.broadcastExisTance();
         this.existingIntervalId = setInterval(()=>{
-           this.sendMessage(MESSAGE.existing());
-        },2000);
+           this.broadcastExisTance();
+        },10000);
     },
     sendMessage: function(object){
+        if(object.type === 'media' && VIDEO.ignoreMediaEvent){
+            return;
+        }
         this.broadcast(JSON.stringify(object));
+    },
+    broadcastExisTance: function(){
+        this.sendMessage(MESSAGE.existing());
     },
     hendleDisconnect: function(){
         connected = false;
         document.getElementById('video-title-id').classList.remove('connected-title')
         if(this.leaving){
-            this.leaveing = false;
-            clearInterval(this.existingIntervalId);
-            this.makeTabNoConnect();
+            this.handleLeave();
+            return;
         }
+        this.makeTabDisconnected();
+        
+    },
+    handleLeave: function(){
+        this.leaveing = false;
+        clearInterval(this.existingIntervalId);
+        this.makeTabNoConnect();
+    },
+
+    makeTabDisconnected: function(){
+        this.connectiontab.classList.remove('no-connect');
+        this.connectiontab.classList.remove('connecting');
+        this.connectiontab.classList.add('connected');
+        this.connectiontab.classList.add('disconnected');
     },
     makeTabNoConnect: function(){
         this.connectiontab.classList.remove('connected');
         this.connectiontab.classList.remove('connecting');
+        this.connectiontab.classList.remove('disconnected');
         this.connectiontab.classList.add('no-connect');
     },
     makeTabConnected: function(){
         this.connectiontab.classList.remove('no-connect');
         this.connectiontab.classList.remove('connecting');
+        this.connectiontab.classList.remove('disconnected');
         this.connectiontab.classList.add('connected');
     },
     makeTabConnecting:function(){
         this.connectiontab.classList.remove('no-connect');
         this.connectiontab.classList.remove('connected');
+        this.connectiontab.classList.remove('disconnected');
         this.connectiontab.classList.add('connecting');
     },
 
     hendleFirstConnect: function(){
+        this.sendMessage(MESSAGE.join())
         document.getElementById('video-title-id').classList.add('connected-title')
         document.getElementById('username-label-tab').textContent = this.username;
         document.getElementById('roomid-label-tab').textContent = this.roomId;
@@ -122,3 +148,8 @@ function sendTextMessage(){
     ROOM.sendMessage(MESSAGE.text(input.value));
     input.value = '';
 }
+
+document.querySelector('emoji-picker')
+  .addEventListener('emoji-click', (event) =>{
+    document.getElementById('chat-input-field').value += event.detail.unicode;
+  });
