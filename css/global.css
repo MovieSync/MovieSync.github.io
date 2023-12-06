@@ -48,7 +48,6 @@
       width: 100%;
       order: 1;
     }
-    
   }
 
 
@@ -92,8 +91,6 @@
 .video-title:not(.connected-title) .fa-spin{
   display: none;
 }
-
-
 
 
 /* Headding */

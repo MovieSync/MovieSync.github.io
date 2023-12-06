@@ -561,3 +561,37 @@ emoji-picker{
 .people-disconnect .status-icon{
   color: red;
 }
+
+.remember-connection{
+  color: rgba(255,200,48,1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  font-family: 'Como';
+  font-weight: bolder;
+  font-size: large;
+}
+
+.remember-connection input[type="checkbox"] {
+  display: none;
+}
+
+.remember-connection label.custom {
+  display: flex;
+  padding: 3px;
+ 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+  color: rgba(33,34,36,255);;
+  border: 2px solid rgba(255,200,48,1);
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remember-connection input[type="checkbox"]:checked + .custom {
+  background-color: rgba(255,200,48,1);
+}

@@ -1,4 +1,5 @@
 const ROOM = {
+
     mqttClient: null,
     username: null,
     roomId: null,
@@ -9,8 +10,10 @@ const ROOM = {
     topic: 'MovieSync',
     connectiontab: document.getElementById('connection-tab'),
     existingIntervalId: null,
+    autoJoin: null,
+    notificationVolume: 1,
 
-    join: function(user, roomid){
+    join: function(user, roomid, autoJoin){
         this.connecting = true;
         this.makeTabConnecting();
         this.mqttClient = mqtt.connect('wss://test.mosquitto.org:8081');
@@ -19,6 +22,7 @@ const ROOM = {
         this.mqttClient.on('connect', ()=>{
             this.username = user;
             this.roomId = roomid;
+            this.autoJoin = autoJoin;
             this.hendleConnect();
         });
         this.mqttClient.on('error', (error) => {
@@ -102,26 +106,35 @@ const ROOM = {
 
     hendleFirstConnect: function(){
         this.sendMessage(MESSAGE.join())
+        this.saveConfig();
         document.getElementById('video-title-id').classList.add('connected-title')
         document.getElementById('username-label-tab').textContent = this.username;
         document.getElementById('roomid-label-tab').textContent = this.roomId;
     },
 
-    leave: function(){
+    ringNotification: function(){
+        document.getElementById('notification-sound').play();
+    },
+
+
+    leave: async function(){
         if(!this.connected){
             return;
         }
         this.leaving = true;
         this.mqttClient.end();
     },
-
+    saveConfig: function(){
+        localStorage.setItem('username', this.username);
+        localStorage.setItem('roomId', this.roomId);
+        localStorage.setItem('autoJoin', this.autoJoin);
+    },
     broadcast: function(message){
         if(!this.connected){
             return;
         }
         this.mqttClient.publish(this.topic, message);
     }
-
 }
 
 document.getElementById('roomid-input').addEventListener('keypress', (event)=>{
@@ -136,11 +149,27 @@ document.getElementById('roomid-input').addEventListener('keypress', (event)=>{
     }
   });
 
+function validRoomInfo(username, roomId){
+    const regex = /^[A-Za-z]+$/;
+    if(regex.test(username) && 
+    regex.test(roomId) &&
+    3 <= username.length && username.length <= 10 &&
+    5 <= roomId.length && roomId.length <= 10
+    ){
+        return true;
+    }
+    return false;
+}
+
 function  joinRoom(){
     const username = document.getElementById('username-input').value;
     const roomId = document.getElementById('roomid-input').value;
-    console.log(username, roomId)
-    ROOM.join(username, roomId);
+    if(!validRoomInfo(username, roomId)){
+        return;
+    }
+
+    const autoJoin = document.getElementById('remember-connection').checked;
+    ROOM.join(username, roomId, autoJoin);
 }
 function sendTextMessage(){
     if(!ROOM.connected) return;

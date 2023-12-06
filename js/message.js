@@ -121,6 +121,7 @@ function handleTextMessage(message){
 
 const chatBox = document.getElementById('chat-box-container');
 function appendTextToTextBox(message){
+    ROOM.ringNotification();
     const container = document.createElement('div');
     container.classList.add('message-container');
     

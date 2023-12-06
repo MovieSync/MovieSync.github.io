@@ -22,9 +22,9 @@ const VIDEO = {
     videoAdded: false,
     subtitleAdded: false,
 
-    // ignorePlay: false,
-    // ignorePause: false,
-    // ignoreSeeked: false,
+    ignorePlay: false,
+    ignorePause: false,
+    ignoreSeeked: false,
     ignoreMediaEvent: false,
 
     // 
@@ -98,6 +98,16 @@ const VIDEO = {
         this.changeVideoFileName(filename);
         this.sourceType = type;
         this.video.load();
+        this.changed();
+        this.resetSubtitle();
+       
+    },
+
+    resetSubtitle: function(){
+        this.subtitlesTrack.src = "";
+        this.subtitleAdded = false;
+        this.subtitleFileName = null;
+        this.changeSubtitleFileName('No subtitle is added');
     },
 
     addSubtitle: function(source, filename){
@@ -108,6 +118,7 @@ const VIDEO = {
         this.subtitlesTrack.src = source;
         this.video.textTracks[0].mode = 'showing';
         this.changeSubtitleFileName(filename);
+        this.changed();
     },
 
     changeVideoFileName: function(fileName){
@@ -119,7 +130,9 @@ const VIDEO = {
         this.subtitleFileName = fileName;
         document.getElementById('subtile-filename-tab').textContent = fileName;
     },
-
+    changed: function(){
+        ROOM.broadcastExisTance();
+    },
     isFullScreen: function(){
         return (
             document.fullscreenElement === this.container ||

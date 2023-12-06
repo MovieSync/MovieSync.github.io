@@ -194,6 +194,7 @@ function toggleFullScreenMode() {
   } else {
     document.exitFullscreen()
   }
+  
 }
 
 function toggleMiniPlayerMode() {
@@ -206,6 +207,7 @@ function toggleMiniPlayerMode() {
 
 document.addEventListener("fullscreenchange", () => {
   videoContainer.classList.toggle("full-screen", document.fullscreenElement)
+  ROOM.broadcastExisTance();
 })
 
 video.addEventListener("enterpictureinpicture", () => {

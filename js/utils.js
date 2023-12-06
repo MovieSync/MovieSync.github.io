@@ -14,3 +14,20 @@ TIME = {
         return hours + ':' + minutes;
       }
 }
+const notificationSoundInput = document.getElementById('notification-volume-input');
+notificationSoundInput.addEventListener('change', ()=>{
+  document.getElementById('notification-sound').volume = notificationSoundInput.value;
+  ROOM.ringNotification();
+})
+
+window.onload = async function() {
+  const username = localStorage.getItem('username');
+  const roomId = localStorage.getItem('roomId');
+  const autoJoin = localStorage.getItem('autoJoin');
+  if(username && roomId && autoJoin == 'true'){
+    document.getElementById('username-input').value = username;
+    document.getElementById('roomid-input').value = roomId;
+    ROOM.join(username, roomId, autoJoin);
+  }
+};
+

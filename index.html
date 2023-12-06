@@ -17,7 +17,7 @@
 <body>
     <div class="left">
         <div class="headding">
-            <img src="./elements/img/milkyway-icon.png" height="50" width="50" alt="">
+            <img src="./elements/img/milkyway-icon.png" height="40" width="40" alt="">
             <h1>Mikyway</h1>
             <!-- <button class="donate-btn ease-btn">About</button>
             <button class="about-btn ease-btn">About</button> -->
@@ -95,7 +95,7 @@
         <div class="tabs">
            
             <!-- CHat -->
-            <input class=tab-input name="tabs" type="radio" id="tab-1" checked="checked"/>
+            <input class=tab-input name="tabs" type="radio" id="tab-1"/>
             <label class="tab-label ease-btn" for="tab-1"><i class="fa-solid fa-comment"></i> <span>Chat</span> </label>
             <div class="tab-panel" style="position: relative;;">
                <div id="chat-box-container" class="chat-box">
@@ -122,7 +122,7 @@
                     
                </div>
                 <div class="emoji-box hidden">
-                    <emoji-picker></emoji-picker>
+                    <emoji-picker class="dark"></emoji-picker>
                 </div>
                <div class="message-send-box">
                     <input id="chat-input-field" placeholder="Type Message" type="text">
@@ -132,7 +132,7 @@
             </div>
 
             <!-- Room -->
-            <input class=tab-input name="tabs" type="radio" id="tab-2" />
+            <input class=tab-input name="tabs" type="radio" id="tab-2"/>
             <label class="tab-label ease-btn" for="tab-2"><i class="fa-solid fa-people-roof"></i> <span> Room</span></label>
             <div id="connection-tab" class="tab-panel room-tab no-connect">
                 <div class="connected-tab">
@@ -185,17 +185,16 @@
                     <span><i class="fa-brands fa-connectdevelop fa-spin"></i></span>
                     <input id="username-input" placeholder="Enter Username" type="text">
                     <input id="roomid-input" placeholder="Enter Room ID" type="text">
+                    <div class="remember-connection">
+                        <input type="checkbox" id="remember-connection" checked = "checked">
+                        <label class="custom" for="remember-connection"><i class="fa-solid fa-check"></i></label> <label>Auto Join</label>
+                    </div>
+                    
                     <button onclick="joinRoom()" class="ease-btn">Join Room <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
                 </div>
             </div>
 
-            <!-- Utils -->
-            <input class=tab-input name="tabs" type="radio" id="tab-4"/>
-            <label class="tab-label ease-btn" for="tab-4">
-                <i class="fa-solid fa-gear"></i> <span>Utils</span></label>
-            <div class="tab-panel">
-              Utils
-            </div>
+           
 
              <!-- Media -->
              <input class=tab-input name="tabs" type="radio" id="tab-3" />
@@ -244,7 +243,16 @@
                     <label for="youtube-url-input"  class="ease-btn">Play</label>
                 </div>
              </div>
-
+              <!-- Utils -->
+            <input class=tab-input name="tabs" type="radio" id="tab-4" checked="checked"/>
+            <label class="tab-label ease-btn" for="tab-4">
+                <i class="fa-solid fa-gear"></i> <span>Settings</span></label>
+            <div class="tab-panel">
+                <div class="settings">
+                    <i class="fa-solid fa-bell"></i>
+                <input id="notification-volume-input" type="range" min="0" max="1" step="0.20" value="1">
+                </div>
+            </div>
              <!-- Subtitle -->
              <input class=tab-input name="tabs" type="radio" id="tab-5"/>
              <label class="tab-label ease-btn" for="tab-5"><i class="fa-solid fa-closed-captioning"></i> <span>Subtitle</span></label>
@@ -253,14 +261,24 @@
              </div>
 
               <!-- Log -->
-              <input class=tab-input name="tabs" type="radio" id="tab-6"/>
+              <input class=tab-input name="tabs" type="radio" id="tab-6" />
               <label class="tab-label ease-btn" for="tab-6"><i class="fa-solid fa-clock-rotate-left"></i> <span>Log</span></label>
-              <div class="tab-panel">
-                Subtitle
+              <div class="tab-panel logs">
+                <table>
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
               </div>
 
 
           </div>
+    </div>
+    <div class="hidden">
+        <audio style="display:none; z-index: -1;" id="notification-sound" src="Audio/notification.mp3"></audio>
     </div>
 </body>
 <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>

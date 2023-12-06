@@ -40,7 +40,6 @@
     transition: opacity 150ms ease-in-out;
     font-family: 'Como';
     font-weight: bold;
-
   }
   
   .video-controls-container::before {
